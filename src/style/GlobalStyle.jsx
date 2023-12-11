@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "styled-components";
 
-
-
 const GlobalStyle = createGlobalStyle`
     /* v2.0 | 20110126
   http://meyerweb.com/eric/tools/css/reset/ 
@@ -34,7 +32,15 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-	background-color: white;
+	background-color: #f5f4ee;
+	box-sizing: border-box;
+	font-family: 'Noto Sans KR', sans-serif;
+}
+#root {
+    width: 100%;
+	height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 ol, ul {
 	list-style: none;
@@ -51,21 +57,52 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-a{
+a {
 	text-decoration: none;
 }
-img{
+img {
 	display: block;
 	width: 100%;
 }
-button{
+button {
 	cursor: pointer;
 }
-.container{
-    max-width: 1280px;
+.container {
+    max-width: 100%;
     margin: 0 auto;
-	padding: 100px 0;
 }
+
+div.introduce div.contents-text-wrap a:after {
+    content: '';
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: #9c9c9c;
+    transition: width .5s ease;
+}
+
+div.introduce div.contents-text-wrap a:before {
+    width: 0%;
+    /* background: #9c9c9c; */
+    transition: width .5s ease;
+}
+
+div.introduce div.contents-text-wrap a:after {
+    width: 0%;
+    background: transparent;
+    transition: width 0s ease;
+}
+
+/* .gnb_list{
+	display: flex;
+    justify-content: space-between;
+	.gnb_item{
+		padding: 0 36px;
+	}
+} */
 `
 
 export default GlobalStyle;
