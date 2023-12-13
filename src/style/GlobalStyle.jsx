@@ -59,21 +59,27 @@ table {
 	border-spacing: 0;
 }
 a {
+	color: #fff;
 	text-decoration: none;
+	outline: none
 }
 img {
 	display: block;
 	width: 100%;
 }
 button {
+	border: 0;
 	cursor: pointer;
 }
 * { 
 	box-sizing: border-box;
 }
 .container {
-    max-width: 100%;
+    max-width: 1400px;
+    width: 100%;
+    height: 100vh;
     margin: 0 auto;
+    padding-top: 95px;
 }
 .product-contents {
     position: relative;

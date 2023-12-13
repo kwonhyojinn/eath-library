@@ -1,9 +1,24 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import styled from "styled-components";
 import { Logo } from "../assets";
+import { logout, onUserState } from "../api/firebase";
+import UserDatas from "./UserDatas";
 
 function Nav(props) {
+  const location = useLocation();
+  const [user, setUser] = useState();
+
+  const handleLogout = () => {
+    logout().then(setUser);
+  };
+
+  useEffect(() => {
+    onUserState((user) => {
+      setUser(user);
+    });
+  }, []);
+
   return (
     <HeaderContainer>
       <Link to="/">
@@ -32,9 +47,20 @@ function Nav(props) {
         </ul>
 
         <ul className="menu-list">
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
+          {user ? (
+            <>
+              {user && <UserDatas user={user} />}
+              <li>
+                <Link to={`${location.pathname}`} onClick={handleLogout}>
+                  Logout
+                </Link>
+              </li>
+            </>
+          ) : (
+            <li>
+              <Link to="/login" onClick>Login</Link>
+            </li>
+          )}
           <li>
             <Link to="/like">Like</Link>
           </li>
