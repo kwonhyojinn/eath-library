@@ -58,7 +58,7 @@ function Nav(props) {
             </>
           ) : (
             <li>
-              <Link to="/login" onClick>Login</Link>
+              <Link to="/login">Login</Link>
             </li>
           )}
           <li>
@@ -90,10 +90,14 @@ const HeaderContainer = styled.header`
     color: #222;
     text-decoration: none;
     font-weight: 500;
+    transition: all 0.18s;
     .logo {
       width: 50px;
       align-items: center;
     }
+  }
+  a:hover {
+    color: #4e352c;
   }
   nav {
     display: flex;

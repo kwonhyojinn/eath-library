@@ -1,17 +1,23 @@
-import { Routes, Route, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import "./App.css";
 import Nav from "./components/Nav";
 import GlobalStyle from "./style/GlobalStyle";
-import Main from "./pages/Main";
+import Footer from "./components/Footer";
+
+export function BaseLayout({ children }) {
+  return (
+    <>
+      <Nav />
+      <main>{children}</main>
+      <Footer />
+    </>
+  );
+}
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
-      </Routes>
       <Outlet />
     </>
   );

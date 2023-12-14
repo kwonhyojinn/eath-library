@@ -79,11 +79,11 @@ button {
     width: 100%;
     height: 100vh;
     margin: 0 auto;
-    padding-top: 95px;
+    /* padding-top: 95px; */
 }
 .product-contents {
     position: relative;
-    max-width: 1400px;
+    max-width: 1280px;
     width: 100%;
     margin: 0 auto;
     margin-top: 70px;

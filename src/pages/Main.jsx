@@ -4,11 +4,10 @@ import { MainBg01 } from "../assets";
 import NewProduct from "./NewProduct";
 import BestProduct from "./BestProduct";
 import ReadingRoom from "./ReadingRoom";
-import Footer from "../components/Footer";
 
 function Main(props) {
   return (
-    <div className="container">
+    <div className="">
       <img src={MainBg01} />
       <IntroduceSection className="introduce">
         <div className="introduce-contents">
@@ -32,7 +31,6 @@ function Main(props) {
       <NewProduct />
       <BestProduct />
       <ReadingRoom />
-      <Footer />
     </div>
   );
 }

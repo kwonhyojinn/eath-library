@@ -43,7 +43,6 @@ const FooterContent = styled.footer`
   height: auto;
   padding: 84px 118px 84px 118px;
   background: #eeede5;
-  position: absolute;
   img {
     width: auto;
   }
