@@ -6,6 +6,8 @@ import {
   signInWithPopup,
   signOut,
   onAuthStateChanged,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getDatabase, ref, get } from "firebase/database";
 // import { getStorage } from "firebase/storage";
@@ -88,3 +90,27 @@ async function adminUser(user) {
 }
 
 // Signup
+export async function joinEmail(email, password) {
+  const auth = getAuth(); //저장할 사용자 인증폼을 불러옴
+  console.log(auth);
+  try {
+    const userCredit = await createUserWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    const user = userCredit.user;
+    return user;
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function loginEmail(email, password) {
+  try {
+    const userCredit = await signInWithEmailAndPassword(auth, email, password);
+    return userCredit.user;
+  } catch (error) {
+    console.error(error);
+  }
+}

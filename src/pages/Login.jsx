@@ -1,10 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState }from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { googleLogin, loginEmail } from "../api/firebase";
 import { LogoWide } from "../assets";
 
 function Login(props) {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+    const [errorMsg, setErrorMsg] = useState('');
+
   const handleGoogleLogin = async () => {
     const user = await googleLogin();
     console.log(user);
@@ -12,17 +17,17 @@ function Login(props) {
 
   const loginEvent = async (e) => {
     e.preventDefault();
-    // try {
-    //   const user = await loginEmail(email, password);
-    //   if (user) {
-    //     navigate("/");
-    //   } else {
-    //     setErrorMsg("이메일이나 비밀번호가 일치하지 않습니다.");
-    //   }
-    //   console.log(user);
-    // } catch (error) {
-    //   console.error(error);
-    // }
+    try {
+      const user = await loginEmail(email, password);
+      if (user) {
+        navigate("/");
+      } else {
+        setErrorMsg("이메일이나 비밀번호가 일치하지 않습니다.");
+      }
+      console.log(user);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -36,13 +41,17 @@ function Login(props) {
     >
       <LoginContainer>
         <form onSubmit={loginEvent}>
-          <img src={LogoWide} />
-          <LoginInput type="email" placeholder="www.example.com" />
-          <LoginInput type="password" placeholder="Password" />
+          <Link to='/'>
+            <img src={LogoWide} />
+          </Link>
+          <LoginInput type="email" placeholder="www.example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
+          <LoginInput type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          
           <LogintButton type="submit">Login</LogintButton>
           <GoogleLoginButton onClick={handleGoogleLogin}>
             Continue with Google
           </GoogleLoginButton>
+          {errorMsg && <span className="errorText">{errorMsg}</span>}
         </form>
         <Link to="/signup" style={{ color: "#6d4a3ee5" }}>
           회원가입
