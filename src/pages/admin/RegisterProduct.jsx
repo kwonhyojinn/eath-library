@@ -6,10 +6,11 @@ import PageTemplate from "../../components/PageTemplate";
 
 function RegisterProduct(props) {
   const [product, setProduct] = useState({
+    caption: "",
     title: "",
-    price: "",
-    option: "",
     category: "",
+    price: "",
+    description: "",
   }); //모든 상품의 상태를 빈 문자열로 초기화
   const [file, setFile] = useState(null); //업로드 파일 초기화
   const [isLoading, setIsLoading] = useState(false); //업로드 상태 초기화(업로드시 true)
@@ -43,7 +44,7 @@ function RegisterProduct(props) {
         title: "",
         price: "",
         description: "",
-        option: "",
+        caption: "",
         category: "",
       });
 
@@ -98,6 +99,24 @@ function RegisterProduct(props) {
             </RightColumn>
           </FormRow>
 
+          {/* 상품 캡션 */}
+          <FormRow>
+            <LeftColumn>
+              <span>상품 캡션</span>
+            </LeftColumn>
+            <RightColumn>
+              <InputArea>
+                <input
+                  type="text"
+                  name="caption"
+                  placeholder="상품 캡션을 입력해주세요."
+                  value={product.caption}
+                  onChange={onChange}
+                />
+              </InputArea>
+            </RightColumn>
+          </FormRow>
+
           {/* 상품 가격 */}
           <FormRow>
             <LeftColumn>
@@ -116,24 +135,6 @@ function RegisterProduct(props) {
             </RightColumn>
           </FormRow>
 
-          {/* 상품 옵션 */}
-          <FormRow>
-            <LeftColumn>
-              <span>상품 옵션</span>
-            </LeftColumn>
-            <RightColumn>
-              <InputArea>
-                <input
-                  type="text"
-                  name="option"
-                  placeholder="상품 옵션을 입력해주세요."
-                  value={product.option}
-                  onChange={onChange}
-                />
-              </InputArea>
-            </RightColumn>
-          </FormRow>
-
           {/* 상품 설명 */}
           <FormRow>
             <LeftColumn>
@@ -143,9 +144,9 @@ function RegisterProduct(props) {
               <InputArea>
                 <input
                   type="text"
-                  name="decription"
+                  name="description"
                   placeholder="상품 설명을 입력해주세요."
-                  value={product.description}
+                  value={product.description || ""}
                   onChange={onChange}
                 />
               </InputArea>
@@ -258,6 +259,7 @@ const InputArea = styled.div`
   display: flex;
   align-items: center;
   width: 100%;
+  height: auto;
   height: 40px;
   background-color: #fff;
   input {
