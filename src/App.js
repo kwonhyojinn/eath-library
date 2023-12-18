@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import GlobalStyle from "./style/GlobalStyle";
 import Footer from "./components/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export function BaseLayout({ children }) {
   return (
@@ -16,12 +17,16 @@ export function BaseLayout({ children }) {
 }
 
 function App() {
+  const queryClient = new QueryClient();
+
   return (
     <>
-      <AuthContextProvider>
-        <GlobalStyle />
-        <Outlet />
-      </AuthContextProvider>
+      <QueryClientProvider client={queryClient}>
+        <AuthContextProvider>
+          <GlobalStyle />
+          <Outlet />
+        </AuthContextProvider>
+      </QueryClientProvider>
     </>
   );
 }

@@ -129,3 +129,13 @@ export async function addProducts(product, image) {
     //join(',') 분리된 문자를 다시 문자열로 쉼표로 구분하여 작성
   });
 }
+
+// Get products (All products)
+export async function getProducts() {
+  const snapshot = await get(ref(database, "products"));
+  if (snapshot.exists()) {
+    return Object.values(snapshot.val());
+  } else {
+    return [];
+  }
+}
