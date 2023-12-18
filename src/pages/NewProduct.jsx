@@ -75,7 +75,7 @@ function NewProduct(props) {
   );
 }
 
-const NewProductSection = styled.div`
+const NewProductSection = styled.section`
   background-image: url(${MainBg02});
   background-size: cover;
   background-repeat: no-repeat;

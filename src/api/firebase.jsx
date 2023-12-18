@@ -9,7 +9,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { getDatabase, ref, get } from "firebase/database";
+import { set, getDatabase, ref, get } from "firebase/database";
+import { v4 as uuid } from "uuid"; //고유 식별자를 생성해주는 패키지
 // import { getStorage } from "firebase/storage";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -113,4 +114,18 @@ export async function loginEmail(email, password) {
   } catch (error) {
     console.error(error);
   }
+}
+
+// 파이어베이스에 상품 정보 연동하기
+export async function addProducts(product, image) {
+  const id = uuid();
+  return set(ref(database, `products/${id}`), {
+    ...product,
+    id,
+    image,
+    price: parseInt(product.price),
+    //option : product.option.split(',').map(option =>option.trim())
+    //trim() 문자열에 있는 공백제거
+    //join(',') 분리된 문자를 다시 문자열로 쉼표로 구분하여 작성
+  });
 }

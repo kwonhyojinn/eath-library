@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { Room01, Room02, Room03 } from "../assets";
+// import { Room01, Room02, Room03 } from "../assets";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -28,7 +28,7 @@ export default function SlideContent() {
         modules={[Pagination, Navigation]}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <img src={Room01} loading="lazy" />
           <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
         </SwiperSlide>
@@ -41,7 +41,7 @@ export default function SlideContent() {
         <SwiperSlide>
           <img src={Room03} loading="lazy" />
           <div className="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );

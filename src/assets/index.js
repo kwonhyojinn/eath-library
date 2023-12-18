@@ -21,5 +21,5 @@ export { default as Hover04 } from "./images/hover_04.png";
 export { default as Hover05 } from "./images/hover_05.png";
 export { default as Room01 } from './images/room_01.png';
 export { default as Room02 } from './images/room_02.png';
-export { default as Room03 } from './images/room_03.png';
+// export { default as Room03 } from './images/room_03.png';
 export { default as LogoWide } from './images/logo.wide.png';

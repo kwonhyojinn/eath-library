@@ -3,6 +3,7 @@ import "./App.css";
 import Nav from "./components/Nav";
 import GlobalStyle from "./style/GlobalStyle";
 import Footer from "./components/Footer";
+import { AuthContextProvider } from "./context/AuthContext";
 
 export function BaseLayout({ children }) {
   return (
@@ -17,8 +18,10 @@ export function BaseLayout({ children }) {
 function App() {
   return (
     <>
-      <GlobalStyle />
-      <Outlet />
+      <AuthContextProvider>
+        <GlobalStyle />
+        <Outlet />
+      </AuthContextProvider>
     </>
   );
 }

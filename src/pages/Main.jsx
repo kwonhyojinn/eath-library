@@ -7,7 +7,7 @@ import ReadingRoom from "./ReadingRoom";
 
 function Main(props) {
   return (
-    <div className="">
+    <>
       <img src={MainBg01} />
       <IntroduceSection className="introduce">
         <div className="introduce-contents">
@@ -31,11 +31,11 @@ function Main(props) {
       <NewProduct />
       <BestProduct />
       <ReadingRoom />
-    </div>
+    </>
   );
 }
 
-const IntroduceSection = styled.div`
+const IntroduceSection = styled.section`
   height: 600px;
   .introduce-contents {
     padding-top: 117px;

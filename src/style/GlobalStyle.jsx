@@ -6,7 +6,7 @@ const GlobalStyle = createGlobalStyle`
   License: none (public domain)
 */
 html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
@@ -21,15 +21,16 @@ time, mark, audio, video {
 	margin: 0;
 	padding: 0;
 	border: 0;
-	/* font-size: 100%; */
-	font-size: 14px;
-	/* font: inherit; */
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section {
 	display: block;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	padding: 0;
 }
 body {
 	line-height: 1;
@@ -38,10 +39,10 @@ body {
 	font-family: 'Noto Sans KR', sans-serif;
 }
 #root {
-    width: 100%;
+    /* width: 100%;
 	height: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; */
 }
 ol, ul {
 	list-style: none;
@@ -59,9 +60,12 @@ table {
 	border-spacing: 0;
 }
 a {
-	color: #fff;
+	color: #000;
 	text-decoration: none;
 	outline: none
+}
+input {
+	outline: none;
 }
 img {
 	display: block;
@@ -73,13 +77,6 @@ button {
 }
 * { 
 	box-sizing: border-box;
-}
-.container {
-    max-width: 1400px;
-    width: 100%;
-    height: 100vh;
-    margin: 0 auto;
-    /* padding-top: 95px; */
 }
 .product-contents {
     position: relative;

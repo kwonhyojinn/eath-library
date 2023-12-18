@@ -26,7 +26,7 @@ function BestProduct(props) {
   );
 }
 
-const BestProductSection = styled.div`
+const BestProductSection = styled.section`
   width: 100%;
   height: auto;
   display: flex;

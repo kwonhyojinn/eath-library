@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-// import { ProtectRoute } from "./ProtectRoute";
+import ProtectRoute from "./ProtectRoute";
 import App, { BaseLayout } from "../App";
 import NotFound from "../pages/NotFound";
 import Main from "../pages/Main";
-// import RegisterProduct from "../pages/RegisterProduct";
+import RegisterProduct from "../pages/admin/RegisterProduct";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
+import Products from "../pages/Products";
 
 const routes = createBrowserRouter([
   {
@@ -30,12 +31,22 @@ const routes = createBrowserRouter([
         element: <Signup />,
       },
       {
-        // path: "/admin/new",
-        // element: (
-        //   <ProtectRoute checkAdmin>
-        //     <RegisterProduct />
-        //   </ProtectRoute>
-        // ),
+        path: "/products",
+        element: (
+          <BaseLayout>
+            <Products />
+          </BaseLayout>
+        ),
+      },
+      {
+        path: "/admin/new",
+        element: (
+          <BaseLayout>
+            <ProtectRoute checkAdmin>
+              <RegisterProduct />
+            </ProtectRoute>
+          </BaseLayout>
+        ),
       },
       //   { path: "/cart", element: <MyCart /> },
       //   { path: "/products/detail/:id", element: <ProductDetail /> },

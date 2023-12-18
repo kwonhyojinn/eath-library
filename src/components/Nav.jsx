@@ -4,10 +4,17 @@ import styled from "styled-components";
 import { Logo } from "../assets";
 import { logout, onUserState } from "../api/firebase";
 import UserDatas from "./UserDatas";
+import MenuItem from "@mui/material/MenuItem";
 
 function Nav(props) {
   const location = useLocation();
   const [user, setUser] = useState();
+  const [anchorEl, setAnchorEl] = useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleLogout = () => {
     logout().then(setUser);
@@ -20,100 +27,104 @@ function Nav(props) {
   }, []);
 
   return (
-    <HeaderContainer>
-      <Link to="/">
-        <h1 className="logo">
-          <img src={Logo} />
-        </h1>
-      </Link>
-
-      <nav>
-        <ul className="gnb_list">
-          <li className="gnb_item">
-            <Link to="/allproducts">All</Link>
-          </li>
-
-          <li className="gnb_item">
+    <NavContainer>
+      <NavBox>
+        <LogoBox to="/">
+          <h1 className="logo">
+            <img src={Logo} />
+          </h1>
+        </LogoBox>
+        <NavList>
+          <NavListItem className="left-item">
+            <Link to="/products">All</Link>
             <Link to="/Facial">Facial</Link>
-          </li>
-
-          <li className="gnb_item">
             <Link to="/Hand">Hand</Link>
-          </li>
-
-          <li className="gnb_item">
             <Link to="/LifeStyle">Life Style</Link>
-          </li>
-        </ul>
-
-        <ul className="menu-list">
-          {user ? (
-            <>
-              {user && <UserDatas user={user} />}
-              <li>
-                <Link to={`${location.pathname}`} onClick={handleLogout}>
-                  Logout
-                </Link>
-              </li>
-            </>
-          ) : (
-            <li>
+          </NavListItem>
+          <NavListItem className="right-item">
+            {user && (
+              <UserDatas user={user}>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/like">찜하기</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/cart">장바구니</Link>
+                </MenuItem>
+                <MenuItem onClick={handleClose}>
+                  <Link to="/admin/new">상품 등록</Link>
+                </MenuItem>
+              </UserDatas>
+            )}
+            {user ? (
+              <Link to={`${location.pathname}`} onClick={handleLogout}>
+                Logout
+              </Link>
+            ) : (
               <Link to="/login">Login</Link>
-            </li>
-          )}
-          <li>
-            <Link to="/like">Like</Link>
-          </li>
-          <li>
-            <Link to="/cart">Cart</Link>
-          </li>
-        </ul>
-      </nav>
-    </HeaderContainer>
+            )}
+          </NavListItem>
+        </NavList>
+      </NavBox>
+    </NavContainer>
   );
 }
 
-const HeaderContainer = styled.header`
-  display: flex;
-  position: fixed;
-  top: 30px;
+const NavContainer = styled.nav`
+  position: sticky;
+  top: 0;
   left: 0;
   right: 0;
+  background-color: #f5f4ee;
+  backdrop-filter: blur(5px);
   width: 100%;
+  height: 90px;
+  z-index: 90;
   align-items: center;
-  box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
+`;
+
+const NavBox = styled.div`
+  display: flex;
   max-width: 1400px;
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
-  a {
-    font-size: 16px;
+`;
+
+const LogoBox = styled(Link)`
+  display: flex;
+  align-items: center;
+  .logo {
+    width: 50px;
+    align-items: center;
+  }
+`;
+
+const NavList = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-left: 150px;
+`;
+
+const NavListItem = styled.div`
+  display: flex;
+  align-items: center;
+  & > a {
+    font-size: 18px;
     color: #222;
     text-decoration: none;
     font-weight: 500;
     transition: all 0.18s;
-    .logo {
-      width: 50px;
-      align-items: center;
-    }
   }
-  a:hover {
-    color: #4e352c;
+  &.left-item {
+    gap: 72px;
   }
-  nav {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-left: 150px;
-    .gnb_list {
-      display: flex;
-      gap: 72px;
-    }
-  }
-  .menu-list {
-    display: flex;
-    margin-left: 72px;
+  &.right-item {
     gap: 20px;
-    align-items: center;
+    margin-left: 72px;
   }
 `;
+
 export default Nav;

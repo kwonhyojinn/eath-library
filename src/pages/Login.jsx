@@ -1,14 +1,14 @@
-import React, { useState }from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { googleLogin, loginEmail } from "../api/firebase";
 import { LogoWide } from "../assets";
 
 function Login(props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigate = useNavigate();
-    const [errorMsg, setErrorMsg] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleGoogleLogin = async () => {
     const user = await googleLogin();
@@ -31,22 +31,25 @@ function Login(props) {
   };
 
   return (
-    <div
-      className="container"
-      style={{
-        display: "flex",
-        justifyContent: "center",
-        alignContent: "center",
-      }}
-    >
-      <LoginContainer>
+    <LoginContainer>
+      <LoginBox>
         <form onSubmit={loginEvent}>
-          <Link to='/'>
+          <Link to="/">
             <img src={LogoWide} />
           </Link>
-          <LoginInput type="email" placeholder="www.example.com" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <LoginInput type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
-          
+          <LoginInput
+            type="email"
+            placeholder="www.example.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <LoginInput
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+
           <LogintButton type="submit">Login</LogintButton>
           <GoogleLoginButton onClick={handleGoogleLogin}>
             Continue with Google
@@ -56,12 +59,19 @@ function Login(props) {
         <Link to="/signup" style={{ color: "#6d4a3ee5" }}>
           회원가입
         </Link>
-      </LoginContainer>
-    </div>
+      </LoginBox>
+    </LoginContainer>
   );
 }
 
 const LoginContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+`;
+
+const LoginBox = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: column;

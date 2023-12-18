@@ -29,7 +29,7 @@ function Signup(props) {
   };
 
   return (
-    <div
+    <SignupContainer
       className="container"
       style={{
         display: "flex",
@@ -37,7 +37,7 @@ function Signup(props) {
         alignContent: "center",
       }}
     >
-      <JoininContainer>
+      <SignupBox>
         <form onSubmit={signUpEvent}>
           <Link to="/">
             <img src={LogoWide} />
@@ -63,12 +63,19 @@ function Signup(props) {
 
           <SignupButton type="submit">Sign up</SignupButton>
         </form>
-      </JoininContainer>
-    </div>
+      </SignupBox>
+    </SignupContainer>
   );
 }
 
-const JoininContainer = styled.div`
+const SignupContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+`;
+
+const SignupBox = styled.div`
   justify-content: center;
   display: flex;
   flex-direction: column;
