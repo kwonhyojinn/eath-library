@@ -127,6 +127,33 @@ button {
 	transition: width 0s ease;
 	}
   }
+
+  li{
+        flex-shrink: 0;
+        flex-basis: 30%;
+		.productsItem{
+			display:flex;
+			flex-direction: column;
+			gap: 20px;
+			.textWrap{
+				display: flex;
+				flex-direction: column;
+				gap:10px;
+				.itemTitle{
+					font-size: 20px;
+					font-weight: normal;
+					transition: 500ms;
+					color: rgba(0,0,0,0.5);
+				}
+				.itemFlex{
+					display: flex;
+					justify-content: space-between;
+				}
+
+			}
+		}
+        
+    }
 `;
 
 export default GlobalStyle;

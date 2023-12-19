@@ -5,6 +5,7 @@ import { Logo } from "../assets";
 import { logout, onUserState } from "../api/firebase";
 import UserDatas from "./UserDatas";
 import MenuItem from "@mui/material/MenuItem";
+import CategoryList from "./CategoryList";
 
 function Nav(props) {
   const location = useLocation();
@@ -36,10 +37,7 @@ function Nav(props) {
         </LogoBox>
         <NavList>
           <NavListItem className="left-item">
-            <Link to="/products">All</Link>
-            <Link to="/Facial">Facial</Link>
-            <Link to="/Hand">Hand</Link>
-            <Link to="/LifeStyle">Life Style</Link>
+            <CategoryList />
           </NavListItem>
           <NavListItem className="right-item">
             {user && (
@@ -96,7 +94,7 @@ const LogoBox = styled(Link)`
   align-items: center;
   .logo {
     width: 50px;
-    align-items: center;
+  align-items: center;
   }
 `;
 

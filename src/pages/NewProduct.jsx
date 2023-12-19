@@ -16,7 +16,7 @@ function NewProduct(props) {
             <br />
             빛나는 피부를 만끽하세요
           </div>
-          <Link to="/all" className="link-btn">
+          <Link to="/products" className="link-btn">
             MORE PRODUCT
           </Link>
         </div>

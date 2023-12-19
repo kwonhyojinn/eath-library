@@ -7,6 +7,7 @@ import RegisterProduct from "../pages/admin/RegisterProduct";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Products from "../pages/Products";
+import CategoryPage from "../pages/CategoryPage";
 
 const routes = createBrowserRouter([
   {
@@ -45,6 +46,14 @@ const routes = createBrowserRouter([
             <ProtectRoute checkAdmin>
               <RegisterProduct />
             </ProtectRoute>
+          </BaseLayout>
+        ),
+      },
+      {
+        path: "/products/:category",
+        element: (
+          <BaseLayout>
+            <CategoryPage />
           </BaseLayout>
         ),
       },

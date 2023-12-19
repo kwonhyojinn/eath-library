@@ -92,7 +92,7 @@ async function adminUser(user) {
 
 // Signup
 export async function joinEmail(email, password) {
-  const auth = getAuth(); //저장할 사용자 인증폼을 불러옴
+  const auth = getAuth();
   console.log(auth);
   try {
     const userCredit = await createUserWithEmailAndPassword(
@@ -124,9 +124,6 @@ export async function addProducts(product, image) {
     id,
     image,
     price: parseInt(product.price),
-    //option : product.option.split(',').map(option =>option.trim())
-    //trim() 문자열에 있는 공백제거
-    //join(',') 분리된 문자를 다시 문자열로 쉼표로 구분하여 작성
   });
 }
 
@@ -138,4 +135,18 @@ export async function getProducts() {
   } else {
     return [];
   }
+}
+
+// 상품 카테고리별 분류해서 불러오기
+export async function getCategoryProduct(category) {
+  return get(ref(database, "products")).then((snapshot) => {
+    if (snapshot.exists()) {
+      const allProduct = Object.values(snapshot.val());
+      const filterProduct = allProduct.filter(
+        (product) => product.category === category
+      );
+      return filterProduct;
+    }
+    return [];
+  });
 }
