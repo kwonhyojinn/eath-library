@@ -5,7 +5,7 @@ function CategoryListItem({ product }) {
   const setPrice = parseInt(product.price).toLocaleString();
   const navigate = useNavigate();
   const detail = () => {
-    navigate(`products/detail/${product.id}`, {
+    navigate(`products/${product.category}/${product.id}`, {
       state: {
         title: product.title,
         id: product.id,

@@ -18,7 +18,6 @@ export function BaseLayout({ children }) {
 
 function App() {
   const queryClient = new QueryClient();
-
   return (
     <>
       <QueryClientProvider client={queryClient}>

@@ -8,6 +8,7 @@ import Login from "../pages/Login";
 import Signup from "../pages/Signup";
 import Products from "../pages/Products";
 import CategoryPage from "../pages/CategoryPage";
+import ProductDetail from "../pages/ProductDetail";
 
 const routes = createBrowserRouter([
   {
@@ -57,8 +58,16 @@ const routes = createBrowserRouter([
           </BaseLayout>
         ),
       },
+      {
+        path: "/products/:category/:id",
+        element: (
+          <BaseLayout>
+            <ProductDetail />
+          </BaseLayout>
+        ),
+      },
       //   { path: "/cart", element: <MyCart /> },
-      //   { path: "/products/detail/:id", element: <ProductDetail /> },
+
       //   { path: "/products/:category", element: <CategoryPage /> },
       //   { path: "/search", element: <Search /> },
     ],

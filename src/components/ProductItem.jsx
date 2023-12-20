@@ -10,7 +10,7 @@ function ProductItem({
   return (
     <ProductItemContainer>
       <ProductItemBox
-        to={`/products/detail/${id}`}
+        to={`/products/${category}/${id}`}
         state={{
           title: title,
           id: id,

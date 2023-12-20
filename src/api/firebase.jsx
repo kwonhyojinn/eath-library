@@ -9,7 +9,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import { set, getDatabase, ref, get } from "firebase/database";
+import { set, getDatabase, ref, get, remove } from "firebase/database";
 import { v4 as uuid } from "uuid"; //고유 식별자를 생성해주는 패키지
 // import { getStorage } from "firebase/storage";
 
@@ -150,3 +150,32 @@ export async function getCategoryProduct(category) {
     return [];
   });
 }
+
+// 장바구니에 저장된 요소들을 업데이트
+export async function updateCart(userId, product) {
+  try {
+    const cartRef = ref(database, `cart/${userId}/${product.id}`); //업데이트, 새로 세팅할때 = ref
+    await set(cartRef, product);
+  } catch (error) {
+    console.error(error);
+  }
+}
+export async function getCart(userId) {
+  try {
+    const snapshot = await get(ref(database, `cart/${userId}`)); //저장되어있는걸 가져오기때문에 get
+    if (snapshot.exists()) {
+      const item = snapshot.val();
+      return Object.values(item);
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+export async function deleteCartItem(userId, productId) {
+  console.log(userId, productId);
+  return remove(ref(database, `cart/${userId}/${productId}`));
+}
+

@@ -94,7 +94,7 @@ const LogoBox = styled(Link)`
   align-items: center;
   .logo {
     width: 50px;
-  align-items: center;
+    align-items: center;
   }
 `;
 
@@ -120,7 +120,7 @@ const NavListItem = styled.div`
     gap: 72px;
   }
   &.right-item {
-    gap: 20px;
+    gap: 10px;
     margin-left: 72px;
   }
 `;
