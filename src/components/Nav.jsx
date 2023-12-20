@@ -60,6 +60,7 @@ function Nav(props) {
             ) : (
               <Link to="/login">Login</Link>
             )}
+            <Link to="/search">Search</Link>
           </NavListItem>
         </NavList>
       </NavBox>
@@ -120,7 +121,7 @@ const NavListItem = styled.div`
     gap: 72px;
   }
   &.right-item {
-    gap: 10px;
+    gap: 20px;
     margin-left: 72px;
   }
 `;

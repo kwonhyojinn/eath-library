@@ -179,3 +179,30 @@ export async function deleteCartItem(userId, productId) {
   return remove(ref(database, `cart/${userId}/${productId}`));
 }
 
+// Search product
+export async function searchProduct(query) {
+  try {
+    const dbRef = ref(database, "products");
+    const snapshot = await get(dbRef);
+
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const allProduct = Object.values(data);
+
+      if (allProduct.length === 0) {
+        return [];
+      }
+      const matchItems = allProduct.filter((product) => {
+        const itemTitle = product.title.toLowerCase(); //받아온 문자열이 영어이면 소문자로 변환
+        console.log(itemTitle);
+        return itemTitle.includes(query.toLowerCase());
+      });
+
+      return matchItems;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}

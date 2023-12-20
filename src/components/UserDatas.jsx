@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 
-function UserDatas({ user: { photoURL, displayName }, children }) {
+function UserDatas({ user: { displayName }, children }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -16,7 +16,6 @@ function UserDatas({ user: { photoURL, displayName }, children }) {
 
   return (
     <UserAccount>
-      <IconImg src={photoURL} alt={displayName} />
       <Button
         id="basic-button"
         aria-controls={open ? "basic-menu" : undefined}
@@ -24,6 +23,10 @@ function UserDatas({ user: { photoURL, displayName }, children }) {
         aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
         color="inherit"
+        style={{
+          minWidth: 0,
+          padding: 0,
+        }}
       >
         <span className="hidden">{displayName}</span>
       </Button>
@@ -48,8 +51,4 @@ const UserAccount = styled.div`
   display: flex;
   align-items: center;
   gap: 6px;
-`;
-const IconImg = styled.img`
-  width: 36px;
-  border-radius: 100%;
 `;

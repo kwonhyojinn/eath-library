@@ -13,15 +13,15 @@ function ProductDetail(props) {
   const [success, setSuccess] = useState();
 
   const { addItemCart } = useCart(); //addItemCart 불러오기
-  const cartItem = () => {
-    const product = { id, image, title, price, quantity: 1 };
-    //quantity = 1 수량 체크
-    addItemCart.mutate(product, {
-      onSuccess: () => {
-        setSuccess("장바구니에 상품이 추가되었습니다.");
-      },
-    });
-  };
+  // const cartItem = () => {
+  //   const product = { id, image, title, price, quantity: 1 };
+  //   //quantity = 1 수량 체크
+  //   addItemCart.mutate(product, {
+  //     onSuccess: () => {
+  //       setSuccess("장바구니에 상품이 추가되었습니다.");
+  //     },
+  //   });
+  // };
 
   return (
     <PageTemplate>

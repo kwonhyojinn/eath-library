@@ -8,6 +8,7 @@ function PageTemplate({ children }) {
 const Container = styled.div`
   max-width: 1400px;
   width: 100%;
+  height: 100vh;
   margin: 0 auto;
   padding: 30px;
 `;
