@@ -11,7 +11,12 @@ function RegisterProduct(props) {
     category: "",
     price: "",
     description: "",
+    details: {
+      usage: "",
+      ingredients: "",
+    },
   }); //모든 상품의 상태를 빈 문자열로 초기화
+
   const [file, setFile] = useState(null); //업로드 파일 초기화
   const [isLoading, setIsLoading] = useState(false); //업로드 상태 초기화(업로드시 true)
   const [success, setSuccess] = useState(null); //업로드 완료 상태
@@ -46,6 +51,10 @@ function RegisterProduct(props) {
         description: "",
         caption: "",
         category: "",
+        details: {
+          usage: "",
+          ingredients: "",
+        },
       });
 
       setFile(null);
@@ -147,6 +156,42 @@ function RegisterProduct(props) {
                   name="description"
                   placeholder="상품 설명을 입력해주세요."
                   value={product.description || ""}
+                  onChange={onChange}
+                />
+              </InputArea>
+            </RightColumn>
+          </FormRow>
+
+          {/* 사용법 */}
+          <FormRow>
+            <LeftColumn>
+              <span>상품 설명</span>
+            </LeftColumn>
+            <RightColumn>
+              <InputArea>
+                <input
+                  type="text"
+                  name="usage"
+                  placeholder="상품 사용법을 입력해주세요."
+                  value={product.usage || ""}
+                  onChange={onChange}
+                />
+              </InputArea>
+            </RightColumn>
+          </FormRow>
+
+          {/* 상품 재료 */}
+          <FormRow>
+            <LeftColumn>
+              <span>상품 재료</span>
+            </LeftColumn>
+            <RightColumn>
+              <InputArea>
+                <input
+                  type="text"
+                  name="ingredients"
+                  placeholder="상품 재료를 입력해주세요."
+                  value={product.ingredients || ""}
                   onChange={onChange}
                 />
               </InputArea>

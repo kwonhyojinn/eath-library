@@ -9,6 +9,7 @@ import CategoryList from "./CategoryList";
 
 function Nav(props) {
   const location = useLocation();
+
   const [user, setUser] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
@@ -46,13 +47,11 @@ function Nav(props) {
                   <Link to="/like">찜하기</Link>
                 </MenuItem>
                 <MenuItem onClick={handleClose}>
-                  <Link to="/cart">장바구니</Link>
-                </MenuItem>
-                <MenuItem onClick={handleClose}>
                   <Link to="/admin/new">상품 등록</Link>
                 </MenuItem>
               </UserDatas>
             )}
+            <Link to="/cart">Cart</Link>
             {user ? (
               <Link to={`${location.pathname}`} onClick={handleLogout}>
                 Logout

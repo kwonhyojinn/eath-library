@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function ProductItem({
-  product: { id, image, title, price, caption, category, description },
+  product: { id, image, title, price, caption, category, description, details },
 }) {
   const setPrice = parseInt(price).toLocaleString();
 
@@ -19,6 +19,7 @@ function ProductItem({
           caption: caption,
           category: category,
           description: description,
+          details: details,
         }}
       >
         <img src={image} alt={title} />
@@ -30,7 +31,6 @@ function ProductItem({
           <PriceBox>{setPrice} 원</PriceBox>
         </ContentBox>
       </ProductItemBox>
-      {/* <DetailPageEvent product={{id, image, title, price, option, category, description}}/> */}
     </ProductItemContainer>
   );
 }

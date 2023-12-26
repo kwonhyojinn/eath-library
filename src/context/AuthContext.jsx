@@ -7,6 +7,10 @@ export function AuthContextProvider({ children }) {
   const [user, setUser] = useState();
   const [unSubScribe, setUnSubScribe] = useState();
 
+  /*
+  로그인시 페이지 데이터 유지
+  */
+
   useEffect(() => {
     const userCange = (newUser) => {
       console.log(newUser);

@@ -25,5 +25,6 @@ export default function useCart() {
       queryClient.invalidateQueries(["cart", uid]);
     },
   });
+
   return { cartInfo, addItemCart, deleteItem }; //밖으로
 }

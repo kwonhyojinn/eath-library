@@ -16,7 +16,7 @@ function CategoryPage(props) {
       .catch((error) => {
         console.error(error);
       });
-  }, [category]); // 빈 배열이 아닌 카테고리
+  }, [category]);
 
   return (
     <PageTemplate>

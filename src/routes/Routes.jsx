@@ -10,6 +10,7 @@ import Products from "../pages/Products";
 import CategoryPage from "../pages/CategoryPage";
 import ProductDetail from "../pages/ProductDetail";
 import Search from "../pages/Search";
+import Cart from "../pages/Cart";
 
 const routes = createBrowserRouter([
   {
@@ -75,11 +76,17 @@ const routes = createBrowserRouter([
           </BaseLayout>
         ),
       },
-      //   { path: "/cart", element: <MyCart /> },
-
-      //   { path: "/products/:category", element: <CategoryPage /> },
+      {
+        path: "/cart",
+        element: (
+          <BaseLayout>
+            <Cart />
+          </BaseLayout>
+        ),
+      },
     ],
   },
 ]);
+
 
 export default routes;

@@ -160,6 +160,7 @@ export async function updateCart(userId, product) {
     console.error(error);
   }
 }
+
 export async function getCart(userId) {
   try {
     const snapshot = await get(ref(database, `cart/${userId}`)); //저장되어있는걸 가져오기때문에 get
@@ -175,7 +176,6 @@ export async function getCart(userId) {
 }
 
 export async function deleteCartItem(userId, productId) {
-  console.log(userId, productId);
   return remove(ref(database, `cart/${userId}/${productId}`));
 }
 
